@@ -1,9 +1,32 @@
 <div class="container-fluid">
   <div class="row">
+    <section class="tiny-dialog">
+      <h3>Find your pet</h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name"
+               name="name"
+               class="form-control"
+               placeholder="Name"
+               [(ngModel)]="searchText">
+      </div>
+    </section>
+    <section class="tiny-dialog">
+      <h3>Add a new pet</h3>
+      <button (click)="activateShowForm(showForm)">Click here</button>
+      <div *ngIf="showForm" class="col-md-4">
+        <div class="gallery-detail">
+          <section id="newPetForm" class="tiny-dialog fader">
+            <h3>Fill in your pet details</h3>
+              <app-create-pet-form></app-create-pet-form>
+          </section>
+        </div>
+      </div>
+    </section>
     <div id="gallery" class="col-md-9">
       <div class="gallery">
           <div class="loader"></div>
-         <div (click)="selectPet(pet, $event)"
+         <div (click)="selectPet(pet)"
            *ngFor="let pet of pets | nameFilter: searchText"
               class="gallery-pet fader" >
           <img class="profile-picture"   [src]="'http://localhost:8080/' + pet.image" alt="pets">
@@ -21,17 +44,7 @@
         </section>
       </div>
     </div>
-    <section class="tiny-dialog">
-      <h3>Find your pet</h3>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input id="name"
-               name="name"
-               class="form-control"
-               placeholder="Name"
-               [(ngModel)]="searchText">
-      </div>
-    </section>
+
   </div>
 </div>
 

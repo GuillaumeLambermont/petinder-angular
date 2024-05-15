@@ -7,4 +7,5 @@ export interface Pet {
   image: string;
   profileText: string;
   popularity: number;
+
 }
